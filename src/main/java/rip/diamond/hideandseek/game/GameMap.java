@@ -1,9 +1,7 @@
 package rip.diamond.hideandseek.game;
 
 import lombok.Getter;
-import me.goodestenglish.api.util.Common;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import rip.diamond.hideandseek.HideAndSeek;

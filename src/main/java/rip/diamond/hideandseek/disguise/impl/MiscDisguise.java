@@ -41,8 +41,6 @@ public class MiscDisguise extends Disguise {
             display.setTeleportDuration(1);
         });
 
-        //todo: add an interaction entity which size matches the block display so seeker can easily hit the hider
-
         task = new BukkitRunnable() {
             @Override
             public void run() {

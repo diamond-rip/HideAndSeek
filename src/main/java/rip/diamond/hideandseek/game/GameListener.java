@@ -4,6 +4,9 @@ import me.goodestenglish.api.util.CC;
 import me.goodestenglish.api.util.Common;
 import org.bukkit.*;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
+import org.bukkit.block.data.Directional;
+import org.bukkit.block.structure.StructureRotation;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,6 +23,8 @@ import org.bukkit.util.BoundingBox;
 import rip.diamond.hideandseek.Config;
 import rip.diamond.hideandseek.HideAndSeek;
 import rip.diamond.hideandseek.Items;
+import rip.diamond.hideandseek.disguise.Disguise;
+import rip.diamond.hideandseek.disguise.impl.MiscDisguise;
 import rip.diamond.hideandseek.enums.DisguiseTypes;
 import rip.diamond.hideandseek.enums.GameRole;
 import rip.diamond.hideandseek.enums.GameState;
@@ -270,6 +275,24 @@ public class GameListener implements Listener {
                         Location blockLoc = player.getLocation().getBlock().getLocation().clone();
                         player.teleport(new Location(blockLoc.getWorld(), blockLoc.getX() + 0.5, blockLoc.getY(), blockLoc.getZ() + 0.5, player.getLocation().getYaw(), player.getLocation().getPitch()));
                         Common.sendMessage(player, "<yellow>已成功固定!");
+                    } else if (itemStack.equals(Items.DIRECTION_CHANGE.getItem())) {
+                        MiscDisguise disguise = (MiscDisguise) gamePlayer.getDisguises().getDisguise();
+
+                        if (disguise.getBlockDisplay().getBlock() instanceof Directional directional) {
+                            int index = directional.getFacing().ordinal();
+                            BlockFace candidate;
+
+                            do {
+                                index = (index + 1) % BlockFace.values().length;
+                                candidate = BlockFace.values()[index];
+                            } while (!directional.getFaces().contains(candidate));
+
+                            directional.setFacing(candidate);
+                            disguise.getBlockDisplay().setBlock(directional);
+                            Common.sendMessage(player, "<yellow>新的方向已變為 <aqua>" + candidate.name());
+                        } else {
+                            Common.sendMessage(player, "<red>這方塊不支援改變方向");
+                        }
                     }
                 }
             }
