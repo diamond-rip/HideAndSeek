@@ -2,7 +2,9 @@
 躲貓貓遊戲 - 用來拍攝影片用途
 
 非常普通的一個躲貓貓插件, 用來拍攝Youtube影片
-其中一部影片為 https://youtu.be/uEC21PBcJcQ (小妞)
+影片:
+- https://youtu.be/uEC21PBcJcQ (小妞)
+- https://youtu.be/NFYKN6WsSys?si=jQvfHTaWSl-rK7ks (小妞)
 
 直播:
 - https://www.youtube.com/live/hbMz7qsT-H8?si=J42mN_bXWZHYj5lX (阿洛)
